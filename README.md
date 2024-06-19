@@ -1,8 +1,8 @@
 # Weather project
 
-  **Author : Ivan Yakovets
-  Group : 5
-  Figma of weather project : https://www.figma.com/design/WYInme5fVlrXAqJGRldHk5/Untitled?node-id=0-1&t=nhzC8DwOnicPf937-0**
+  - Author : Ivan Yakovets
+  - Group : 5
+  - Figma of weather project : https://www.figma.com/design/WYInme5fVlrXAqJGRldHk5/Untitled?node-id=0-1&t=nhzC8DwOnicPf937-0
 
 ## Setup
 
