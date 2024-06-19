@@ -1,6 +1,8 @@
 # Weather project
 
-## Description
+  **Author : Ivan Yakovets
+  Group : 5
+  Figma of weather project : https://www.figma.com/design/WYInme5fVlrXAqJGRldHk5/Untitled?node-id=0-1&t=nhzC8DwOnicPf937-0**
 
 ## Setup
 
@@ -12,4 +14,3 @@
 
 - `npm start` - Start the development server
 - `npm run build` - Build the production bundle
-- `npm run lint` - Lint the codebase
