@@ -1,0 +1,14 @@
+.date-time {
+  text-align: center;
+  padding: 20px;
+}
+
+.date-time h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.date-time p {
+  font-size: 1.2em;
+  margin: 0;
+}

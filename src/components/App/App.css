@@ -1,0 +1,46 @@
+/* inter-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/src/assets/font/inter-v13-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../../assets/jpg/windows-hill-background-yyr1dvt2ivizv2br.jpg');
+  background-size: cover;
+  height: 100vh;
+  font-family: Inter, serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  padding: 20px;
+  background: #d9d9d933;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+}
+
+.search input {
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.content {
+  font-family: Inter, serif;
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  background: rgba(217, 217, 217, 0.5);
+  padding: 20px;
+}
