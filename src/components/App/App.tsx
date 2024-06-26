@@ -21,7 +21,6 @@ const App: React.FC = () => {
       </div>
       <div className="content">
         <Weather city={selectedCity || undefined} />
-        {/* <Events /> */}
       </div>
     </div>
   );
