@@ -1,47 +1,69 @@
 import React, { useEffect, useState } from 'react';
 import { useGeolocation } from '../../hooks/useGeolocation';
 import { getWeatherData as getOpenWeatherData } from '../../services/openWeatherService';
-import { getWeatherData as getStormGlassData } from '../../services/stormGlassService';
-import { WeatherData } from '../../types/Weather';
+import Spinner from '../Spinner/Spinner';
+import './Weather.css';
+import { WeatherProps, WeatherData, Forecast } from '../../types/Weather';
 
-const Weather: React.FC = () => {
-  const { coordinates, error } = useGeolocation();
+const Weather: React.FC<WeatherProps> = ({ city }) => {
+  const { coordinates, error: geoError } = useGeolocation();
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchWeatherData = async () => {
-      if (coordinates) {
-        try {
-          const openWeatherData = await getOpenWeatherData(coordinates.latitude, coordinates.longitude);
-          const stormGlassData = await getStormGlassData(coordinates.latitude, coordinates.longitude);
-          setWeatherData({ openWeatherData, stormGlassData });
-        } catch (err) {
-          console.error(err);
+      try {
+        let data;
+        if (city) {
+          data = await getOpenWeatherData(undefined, undefined, city);
+        } else if (coordinates) {
+          data = await getOpenWeatherData(
+            coordinates.latitude,
+            coordinates.longitude
+          );
         }
+        setWeatherData(data);
+      } catch (err) {
+        console.error('Error fetching weather data:', err);
+        setError('Error fetching weather data');
       }
     };
 
     fetchWeatherData();
-  }, [coordinates]);
+  }, [coordinates, city]);
 
-  if (error) {
-    return <div>Error: {error}</div>;
+  if (geoError || error) {
+    return <div>Error: {geoError || error}</div>;
   }
 
   if (!weatherData) {
-    return <div>Loading...</div>;
+    return <Spinner />;
   }
 
+  const hourlyForecasts = weatherData.list.slice(0, 5);
+
   return (
-    <div>
+    <div className="weather-container">
       <h1>Weather Information</h1>
-      <div>
-        <h2>OpenWeather</h2>
-        <pre>{JSON.stringify(weatherData.openWeatherData, null, 10)}</pre>
-      </div>
-      <div>
-        <h2>StormGlass</h2>
-        <pre>{JSON.stringify(weatherData.stormGlassData, null, 2)}</pre>
+      <div className="hourly-forecast">
+        {hourlyForecasts.map((forecast: Forecast, index: number) => {
+          const { dt, main, weather } = forecast;
+          const { temp } = main;
+          const { description, icon } = weather[0];
+          const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+
+          const date = new Date(dt * 1000);
+          const hours = date.getHours();
+
+          return (
+            <div key={index} className="hourly-forecast-item">
+              <div>{`${hours}:00`}</div>
+              <img src={iconUrl} alt={description} />
+              <div>{`${temp}°C`}</div>
+              <div>{description}</div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
