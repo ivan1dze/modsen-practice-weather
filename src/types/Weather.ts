@@ -3,16 +3,14 @@ export interface WeatherProps {
 }
 
 export interface WeatherData {
-  list: Forecast[];
-}
-
-export interface Forecast {
-  dt: number;
-  main: {
-    temp: number;
-  };
-  weather: {
-    description: string;
-    icon: string;
+  list: {
+    dt: number;
+    main: {
+      temp: number;
+    };
+    weather: {
+      description: string;
+      icon: string;
+    }[];
   }[];
 }
