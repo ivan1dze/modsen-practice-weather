@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Select, { SingleValue } from 'react-select';
 import axios from 'axios';
 import { CityOption, City } from '../../types/CitySearch';
+import './СitySearch.css';
 
 const API_KEY = 'a704542036280897ad1a6a2bc5869897';
 
@@ -18,7 +19,7 @@ const CitySearch: React.FC<{ onCitySelect: (city: string) => void }> = ({
       const fetchCities = async () => {
         try {
           const response = await axios.get(
-            `http://api.openweathermap.org/data/2.5/find?q=${inputValue}&type=like&sort=population&cnt=5&appid=${API_KEY}`
+            `http://api.openweathermap.org/data/2.5/find?q=${inputValue}&type=like&sort=population&cnt=5&appid=${API_KEY}`,
           );
           const cities = response.data.list.map((city: City) => ({
             value: city.name,
@@ -60,7 +61,7 @@ const CitySearch: React.FC<{ onCitySelect: (city: string) => void }> = ({
   };
 
   return (
-    <div>
+    <div className="city-search-container">
       <Select
         value={selectedCity}
         onInputChange={handleInputChange}
@@ -69,10 +70,8 @@ const CitySearch: React.FC<{ onCitySelect: (city: string) => void }> = ({
         placeholder="Search for a city..."
         onKeyDown={handleKeyDown}
         noOptionsMessage={() => 'No cities found'}
+        className="city-search-select"
       />
-      <button onClick={() => selectedCity && onCitySelect(selectedCity.value)}>
-        Search
-      </button>
       {error && <div className="error">{error}</div>}
     </div>
   );
