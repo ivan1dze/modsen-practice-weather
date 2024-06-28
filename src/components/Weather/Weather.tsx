@@ -1,9 +1,11 @@
+import './Weather.css';
+
 import React, { useEffect, useState } from 'react';
+
 import { useGeolocation } from '../../hooks/useGeolocation';
 import { getWeatherData as getOpenWeatherData } from '../../services/openWeatherService';
+import { WeatherData, WeatherProps } from '../../types/Weather';
 import Spinner from '../Spinner/Spinner';
-import './Weather.css';
-import { WeatherProps, WeatherData } from '../../types/Weather';
 
 const Weather: React.FC<WeatherProps> = ({ city }) => {
   const { coordinates, error: geoError } = useGeolocation();

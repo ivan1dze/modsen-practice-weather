@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Select, { SingleValue } from 'react-select';
-import axios from 'axios';
-import { CityOption, City } from '../../types/CitySearch';
 import './СitySearch.css';
+
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import Select, { SingleValue } from 'react-select';
+
+import { City, CityOption } from '../../types/CitySearch';
 
 const API_KEY = 'a704542036280897ad1a6a2bc5869897';
 

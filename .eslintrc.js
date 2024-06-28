@@ -9,11 +9,14 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
-    'prettier'
+    'prettier',
+    'simple-import-sort'
   ],
   rules: {
     'react/prop-types': 'off',
-    'prettier/prettier': 'error'
+    'prettier/prettier': 'error',
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error'
   },
   settings: {
     react: {

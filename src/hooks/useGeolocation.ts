@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { Coordinates } from '../types/Geolocation';
+import { useEffect, useState } from 'react';
 
+import { Coordinates } from '../types/Geolocation';
 export const useGeolocation = () => {
   const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -8,7 +8,7 @@ export const useGeolocation = () => {
   useEffect(() => {
     if (!navigator.geolocation) {
       setError(
-        'Geolocation is not supported by your browser or permission not given'
+        'Geolocation is not supported by your browser or permission not given',
       );
       return;
     }
@@ -21,7 +21,7 @@ export const useGeolocation = () => {
       },
       () => {
         setError('Unable to retrieve your location');
-      }
+      },
     );
   }, []);
 

@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import Weather from '../Weather/Weather';
-import DateTime from '../DateTime/DateTime';
-import CitySearch from '../CitySearch/CitySearch';
 import './App.css';
+
+import React, { useState } from 'react';
+
+import CitySearch from '../CitySearch/CitySearch';
+import DateTime from '../DateTime/DateTime';
+import Weather from '../Weather/Weather';
 
 const App: React.FC = () => {
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
