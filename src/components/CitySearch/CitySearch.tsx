@@ -56,12 +56,6 @@ const CitySearch: React.FC<{ onCitySelect: (city: string) => void }> = ({
     }
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === 'Enter' && selectedCity) {
-      onCitySelect(selectedCity.value);
-    }
-  };
-
   return (
     <div className="city-search-container">
       <Select
@@ -70,7 +64,6 @@ const CitySearch: React.FC<{ onCitySelect: (city: string) => void }> = ({
         onChange={handleChange}
         options={options}
         placeholder="Search for a city..."
-        onKeyDown={handleKeyDown}
         noOptionsMessage={() => 'No cities found'}
         className="city-search-select"
       />
