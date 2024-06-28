@@ -1,14 +1,40 @@
 .weather-container {
-  text-align: center;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.hourly-forecast {
+.view-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.view-toggle button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.view-toggle button:hover {
+  background-color: #0056b3;
+}
+
+.hourly-forecast,
+.daily-forecast {
   display: flex;
   justify-content: space-around;
-  margin-top: 20px;
+  width: 100%;
 }
 
-.hourly-forecast-item {
-  text-align: center;
+.hourly-forecast-item,
+.daily-forecast-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
