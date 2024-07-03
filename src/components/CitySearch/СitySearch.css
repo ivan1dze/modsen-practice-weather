@@ -2,29 +2,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
 }
 
 .city-search-select {
-  width: 300px;
-  margin-bottom: 10px;
-}
-
-.error {
-  color: red;
-  margin-top: 10px;
+  width: 200px;
 }
 
 .city-search-button {
-  background-color: #007bff;
+  background-color: black;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 5px 15px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.city-search-button:hover {
-  background-color: #0056b3;
+  width: 100px;
+  height: 35px;
 }

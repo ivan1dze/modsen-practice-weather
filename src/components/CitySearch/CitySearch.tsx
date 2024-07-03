@@ -1,3 +1,5 @@
+// src/components/CitySearch/CitySearch.tsx
+
 import './СitySearch.css';
 
 import axios from 'axios';
@@ -66,7 +68,28 @@ const CitySearch: React.FC<{ onCitySelect: (city: string) => void }> = ({
         placeholder="Search for a city..."
         noOptionsMessage={() => 'No cities found'}
         className="city-search-select"
+        styles={{
+          control: (provided) => ({
+            ...provided,
+            border: '1px solid black',
+            boxShadow: 'none',
+            width: 200,
+            marginBottom: 10,
+            backgroundColor: 'white',
+            color: 'black',
+          }),
+          menu: (provided) => ({
+            ...provided,
+            width: 200,
+            backgroundColor: 'white',
+          }),
+          singleValue: (provided) => ({
+            ...provided,
+            color: 'black',
+          }),
+        }}
       />
+      <button className="city-search-button">Search</button>
       {error && <div className="error">{error}</div>}
     </div>
   );
