@@ -1,0 +1,13 @@
+.current-city {
+  text-align: center;
+}
+
+.current-city h2 {
+  font-size: 24px;
+  color: #333;
+  display: flex;
+}
+
+.material-symbols-outlined {
+  margin-right: 2%;
+}
