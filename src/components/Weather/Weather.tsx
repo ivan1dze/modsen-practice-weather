@@ -35,6 +35,35 @@ const Weather: React.FC<WeatherProps> = ({ city }) => {
     fetchWeatherData();
   }, [coordinates, city]);
 
+  useEffect(() => {
+    if (!weatherData) return;
+
+    const currentWeather = weatherData.list[0];
+    const weatherMain = currentWeather.weather[0].description.toLowerCase();
+
+    let weatherClass = '';
+    if (weatherMain.includes('clear')) {
+      weatherClass = 'clear';
+    } else if (weatherMain.includes('cloud')) {
+      weatherClass = 'cloud';
+    } else if (weatherMain.includes('rain')) {
+      weatherClass = 'rain';
+    } else {
+      weatherClass = 'default';
+    }
+
+    const rootElement = document.getElementById('root');
+    if (rootElement) {
+      rootElement.classList.add(weatherClass);
+    }
+
+    return () => {
+      if (rootElement) {
+        rootElement.classList.remove(weatherClass);
+      }
+    };
+  }, [weatherData]);
+
   if (geoError || error) {
     return <div>Error: {geoError || error}</div>;
   }
@@ -51,8 +80,8 @@ const Weather: React.FC<WeatherProps> = ({ city }) => {
   return (
     <div className="weather-container">
       <div className="view-toggle">
-        <button onClick={() => setView('hourly' as const)}>Hourly</button>
-        <button onClick={() => setView('daily' as const)}>Daily</button>
+        <button onClick={() => setView('hourly')}>Hourly</button>
+        <button onClick={() => setView('daily')}>Daily</button>
       </div>
       <h1>Weather Information</h1>
       {view === 'hourly' ? (
