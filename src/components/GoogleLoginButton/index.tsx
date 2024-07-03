@@ -1,15 +1,24 @@
-import { useGoogleLogin } from '@react-oauth/google';
-import React from 'react';
+import './style.css';
 
-interface GoogleLoginButtonProps {
-  onSuccess: (token: string) => void;
+import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import React, { useState } from 'react';
+
+interface GoogleAuthButtonProps {
+  onLoginSuccess: (token: string) => void;
+  onLogout: () => void;
 }
 
-const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({ onSuccess }) => {
+const GoogleAuthButton: React.FC<GoogleAuthButtonProps> = ({
+  onLoginSuccess,
+  onLogout,
+}) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const login = useGoogleLogin({
     onSuccess: (tokenResponse) => {
       const token = tokenResponse.access_token;
-      onSuccess(token);
+      onLoginSuccess(token);
+      setIsLoggedIn(true);
     },
     onError: () => {
       console.error('Login Failed');
@@ -17,7 +26,25 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({ onSuccess }) => {
     scope: 'https://www.googleapis.com/auth/calendar.readonly',
   });
 
-  return <button onClick={() => login()}>Login with Google</button>;
+  const handleLogout = () => {
+    googleLogout();
+    setIsLoggedIn(false);
+    onLogout();
+  };
+
+  return (
+    <>
+      {isLoggedIn ? (
+        <button className={'googlebuttonlogin'} onClick={handleLogout}>
+          Exit
+        </button>
+      ) : (
+        <button className={'googlebuttonlogin'} onClick={() => login()}>
+          Sign In
+        </button>
+      )}
+    </>
+  );
 };
 
-export default GoogleLoginButton;
+export default GoogleAuthButton;
