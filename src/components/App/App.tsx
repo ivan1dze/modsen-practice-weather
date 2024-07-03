@@ -9,7 +9,7 @@ import CitySearch from '../CitySearch/CitySearch';
 import CurrentCity from '../CurrentCity/CurrentCity';
 import DateTime from '../DateTime/DateTime';
 import GoogleCalendarEvents from '../GoogleCalendarEvents/';
-import GoogleLoginButton from '../GoogleLoginButton/';
+import GoogleLoginButton from '../GoogleLoginButton';
 import Weather from '../Weather/Weather';
 
 const App: React.FC = () => {
@@ -38,6 +38,10 @@ const App: React.FC = () => {
     setCurrentCity(city);
   };
 
+  const handleLogout = () => {
+    setToken(null);
+  };
+
   return (
     <GoogleOAuthProvider clientId={clientId}>
       <div className="app">
@@ -50,11 +54,11 @@ const App: React.FC = () => {
         </div>
         <div className="content">
           <Weather city={selectedCity} />
-          {!token ? (
-            <GoogleLoginButton onSuccess={setToken} />
-          ) : (
-            <GoogleCalendarEvents token={token} />
-          )}
+          <GoogleLoginButton
+            onLoginSuccess={setToken}
+            onLogout={handleLogout}
+          />
+          {token && <GoogleCalendarEvents token={token} />}
         </div>
       </div>
     </GoogleOAuthProvider>
