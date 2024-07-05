@@ -83,7 +83,7 @@ const Weather: React.FC<WeatherProps> = ({ city }) => {
         <button onClick={() => setView('hourly')}>Hourly</button>
         <button onClick={() => setView('daily')}>Daily</button>
       </div>
-      <h1>Weather Information</h1>
+      <h1 className="weather-title">Weather Information</h1>
       {view === 'hourly' ? (
         <div className="hourly-forecast">
           {hourlyForecasts.map((forecast, index) => {

@@ -1,0 +1,31 @@
+.google-calendar-events {
+  display: flex;
+}
+
+.google-calendar-events ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.google-calendar-events li {
+  margin-top: 10%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.event-time {
+  background-color: #0a376d;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.event-summary {
+  font-size: 16px;
+  font-weight: bold;
+}

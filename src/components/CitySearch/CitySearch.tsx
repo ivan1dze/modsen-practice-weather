@@ -1,5 +1,3 @@
-// src/components/CitySearch/CitySearch.tsx
-
 import './СitySearch.css';
 
 import axios from 'axios';
@@ -75,13 +73,13 @@ const CitySearch: React.FC<{ onCitySelect: (city: string) => void }> = ({
             boxShadow: 'none',
             width: 200,
             marginBottom: 10,
-            backgroundColor: 'white',
+            backgroundColor: 'rgba(255, 255, 255, 0.5)',
             color: 'black',
           }),
           menu: (provided) => ({
             ...provided,
             width: 200,
-            backgroundColor: 'white',
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
           }),
           singleValue: (provided) => ({
             ...provided,

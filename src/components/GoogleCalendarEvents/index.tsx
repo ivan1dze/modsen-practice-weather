@@ -1,3 +1,5 @@
+import './style.css';
+
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
@@ -39,12 +41,25 @@ const GoogleCalendarEvents: React.FC<GoogleCalendarEventsProps> = ({
     fetchEvents();
   }, [token]);
 
+  const formatDate = (dateTime?: string, date?: string): string => {
+    if (dateTime) {
+      const dateObj = new Date(dateTime);
+      return `${dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+    } else if (date) {
+      return new Date(date).toLocaleDateString();
+    }
+    return '';
+  };
+
   return (
     <div className="google-calendar-events">
       <ul>
         {events.map((event) => (
           <li key={event.id}>
-            {event.summary} - {event.start.dateTime || event.start.date}
+            <div className="event-time">
+              {formatDate(event.start.dateTime, event.start.date)}
+            </div>
+            <div className="event-summary">{event.summary}</div>
           </li>
         ))}
       </ul>

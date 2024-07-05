@@ -4,6 +4,10 @@
   align-items: center;
 }
 
+.weather-title {
+  margin-bottom: 5%;
+}
+
 .view-toggle {
   display: flex;
   justify-content: center;
