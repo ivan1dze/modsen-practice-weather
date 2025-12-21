@@ -1,0 +1,31 @@
+.city-search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+.city-search-select {
+  width: 100%;
+}
+
+.error {
+  color: #ff4444;
+  font-size: 12px;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.3);
+  border-radius: 8px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .city-search-container {
+    max-width: 100%;
+  }
+}
