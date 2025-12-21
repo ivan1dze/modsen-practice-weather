@@ -1,13 +1,64 @@
 .date-time {
-  padding: 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .date-time h1 {
-  font-size: 2em;
+  font-size: 32px;
+  font-weight: 700;
   margin: 0;
+  color: var(--text-white);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  font-variant-numeric: tabular-nums;
 }
 
 .date-time p {
-  font-size: 1.2em;
+  font-size: 14px;
+  font-weight: 400;
   margin: 0;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+  text-transform: capitalize;
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+  .date-time h1 {
+    font-size: 28px;
+  }
+
+  .date-time p {
+    font-size: 15px;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .date-time {
+    text-align: center;
+    width: 100%;
+  }
+
+  .date-time h1 {
+    font-size: 24px;
+  }
+
+  .date-time p {
+    font-size: 14px;
+  }
+}
+
+/* Small mobile styles */
+@media (max-width: 480px) {
+  .date-time h1 {
+    font-size: 20px;
+  }
+
+  .date-time p {
+    font-size: 13px;
+  }
 }
