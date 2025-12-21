@@ -24,8 +24,6 @@ export const useGeolocation = () => {
 
   useEffect(() => {
     if (!navigator.geolocation) {
-      // Initialize error state on mount - this is acceptable
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setError(
         'Geolocation is not supported by your browser or permission not given',
       );
