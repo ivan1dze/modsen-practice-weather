@@ -1,6 +1,7 @@
 import './App.css';
 
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
@@ -208,6 +209,7 @@ const App: React.FC = () => {
       >
         <AppContent />
       </motion.div>
+      <SpeedInsights />
     </>
   );
 };
