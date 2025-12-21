@@ -1,0 +1,111 @@
+.loading-spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px;
+}
+
+.spinner-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner-ring {
+  position: absolute;
+  border: 3px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.spinner-ring:nth-child(1) {
+  width: 40px;
+  height: 40px;
+  border-width: 3px;
+  animation-delay: -0.45s;
+}
+
+.spinner-ring:nth-child(2) {
+  width: 56px;
+  height: 56px;
+  border-width: 3px;
+  animation-delay: -0.3s;
+}
+
+.spinner-ring:nth-child(3) {
+  width: 72px;
+  height: 72px;
+  border-width: 3px;
+  animation-delay: -0.15s;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+
+.loading-spinner-container.small .spinner-ring:nth-child(1) {
+  width: 24px;
+  height: 24px;
+  border-width: 2px;
+}
+
+.loading-spinner-container.small .spinner-ring:nth-child(2) {
+  width: 32px;
+  height: 32px;
+  border-width: 2px;
+}
+
+.loading-spinner-container.small .spinner-ring:nth-child(3) {
+  width: 40px;
+  height: 40px;
+  border-width: 2px;
+}
+
+.loading-spinner-container.large .spinner-ring:nth-child(1) {
+  width: 60px;
+  height: 60px;
+  border-width: 4px;
+}
+
+.loading-spinner-container.large .spinner-ring:nth-child(2) {
+  width: 80px;
+  height: 80px;
+  border-width: 4px;
+}
+
+.loading-spinner-container.large .spinner-ring:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  border-width: 4px;
+}
+
+.loading-spinner-container.small .loading-text {
+  font-size: 12px;
+}
+
+.loading-spinner-container.large .loading-text {
+  font-size: 16px;
+}
