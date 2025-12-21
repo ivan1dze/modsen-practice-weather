@@ -1,7 +1,7 @@
 import './App.css';
 
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import { SpeedInsights } from '@vercel/speed-insights/react';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
@@ -174,6 +174,10 @@ const App: React.FC = () => {
   const [showWelcome, setShowWelcome] = useState(isFirstVisit);
   const [showApp, setShowApp] = useState(false);
 
+  useEffect(() => {
+    injectSpeedInsights();
+  }, []);
+
   const handleGetStarted = () => {
     markAsVisited();
     setShowWelcome(false);
@@ -209,7 +213,6 @@ const App: React.FC = () => {
       >
         <AppContent />
       </motion.div>
-      <SpeedInsights />
     </>
   );
 };
